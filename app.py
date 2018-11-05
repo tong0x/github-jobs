@@ -2,7 +2,7 @@ import requests
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-
+# Endpoint for all available jobs
 @app.route('/')
 def postings():
     url = 'https://jobs.github.com/positions.json'
@@ -26,11 +26,9 @@ def results():
     url = 'https://jobs.github.com/positions.json'
     title = request.form['title']
     location = request.form['location']
-    print(title, location)
     r = requests.get(url).json()
     jobs = []
     for json in r:
-        print(json['title'], json['location'])
         if (title.lower() in json['title'].lower() or json['title'].lower() in title.lower()) and (location.lower() in json['location'].lower() or json['location'].lower() in location.lower()):
             curr_job = {
                 'description': json['description'],
