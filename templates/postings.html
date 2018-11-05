@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block body %}
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		<br>
+		{% for job in jobs %}
+			<a href="{{ job['link'] }}">
+				<button type="button" class="btn btn-light btn-block">
+					<div class="descriptions">
+						<ul>{{ job['title'] }}</ul>
+						<ul>{{ job['company'] }} </ul>
+						<ul>{{ job['location'] }}</ul>
+					</div>
+				</button>
+			</a>
+			<br>
+	
+		{% endfor %}
+	  <br>
+	  <br>
+
+</div>
+{% endblock %}
